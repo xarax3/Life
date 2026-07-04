@@ -1,639 +1,473 @@
-# Sprint Metrics
+# Jira Reporting Fundamentals (Part 1)
 
-> سطح: Intermediate → Advanced
+> سطح: Beginner → Advanced
 >
-> ابزارها:
-> - Jira Software
-> - Jira Data Center
-> - Jira Cloud
-> - eazyBI
-> - Tempo
-> - Structure
-> - Advanced Roadmaps
+> این بخش پایه تمام گزارش‌گیری در Jira است. قبل از یادگیری Velocity، Burndown یا eazyBI باید این مفاهیم را کاملاً درک کنید.
 
 ---
 
-# Sprint Metrics چیست؟
+# Table of Contents
 
-Sprint Metrics شاخص‌هایی هستند که عملکرد یک Sprint را از جنبه‌های مختلف اندازه‌گیری می‌کنند.
-
-این شاخص‌ها به سؤالات زیر پاسخ می‌دهند:
-
-- آیا Sprint موفق بوده؟
-- آیا تیم بیش از ظرفیت خود کار برداشته؟
-- آیا تخمین‌ها درست بوده‌اند؟
-- آیا Scope تغییر کرده؟
-- آیا تیم قابل پیش‌بینی است؟
-- آیا Velocity پایدار است؟
+1. Jira Reporting Architecture
+2. Data Flow in Jira
+3. Report چیست؟
+4. Dashboard چیست؟
+5. Gadget چیست؟
+6. Filter چیست؟
+7. JQL چیست؟
+8. ارتباط بین آن‌ها
+9. بهترین روش طراحی داشبورد
+10. نکات مهم
 
 ---
 
-# چرخه Sprint
+# 1. Jira Reporting Architecture
 
-```text
-Backlog
-      │
-      ▼
-Sprint Planning
-      │
-      ▼
-Initial Commitment
-      │
-      ▼
-Development
-      │
-      ▼
-Scope Changes
-      │
-      ▼
-Sprint End
-      │
-      ▼
-Completed Commitment
-      │
-      ▼
-Velocity
+معماری گزارش‌گیری در Jira بسیار ساده اما قدرتمند است.
+
+```
+
+```
+                     Issue
+                       │
+                       ▼
+                  Workflow
+                       │
+                       ▼
+                 Stored Data
+                       │
+         ┌─────────────┴─────────────┐
+         │                           │
+         ▼                           ▼
+      JQL Filter                  Reports
+         │                           │
+         └─────────────┬─────────────┘
+                       ▼
+                   Gadgets
+                       │
+                       ▼
+                  Dashboard
 ```
 
 ---
 
-# 1. Initial Commitment
+تمام گزارش‌های Jira در نهایت از **Issue**ها تولید می‌شوند.
 
-## تعریف
+اگر Issueها اطلاعات درستی نداشته باشند، هیچ گزارشی معتبر نخواهد بود.
 
-مقدار کاری که تیم در **لحظه شروع Sprint** متعهد به انجام آن شده است.
+به همین دلیل همیشه گفته می‌شود:
 
-معمولاً بر اساس:
-
-- Story Point
-- تعداد Issue
-- ساعت
-
-اندازه‌گیری می‌شود.
+> **Good Reports Start with Good Data**
 
 ---
 
-## چرا مهم است؟
+# 2. Data Flow
 
-این عدد مبنای تمام تحلیل‌های Sprint است.
+فرض کنید یک Story ایجاد می‌کنید.
 
-اگر آن را ندانید:
+```
+Story
 
-- Velocity بی‌معنی می‌شود.
-- Predictability قابل اندازه‌گیری نیست.
-- Scope Change مشخص نمی‌شود.
+↓
+
+Estimate = 8
+
+↓
+
+Sprint 12
+
+↓
+
+In Progress
+
+↓
+
+Done
+```
+
+Jira اطلاعات زیر را ذخیره می‌کند:
+
+- زمان ایجاد
+- زمان شروع
+- زمان پایان
+- شخص مسئول
+- Sprint
+- Story Point
+- Version
+- Labels
+- Components
+- Priority
+- Status History
+
+همین اطلاعات بعداً گزارش‌ها را می‌سازند.
+
+---
+
+# 3. Report چیست؟
+
+Report یک تحلیل از اطلاعات موجود در Jira است.
+
+مثال:
+
+```
+Velocity Report
+
+↓
+
+آخرین ۱۰ Sprint
+
+↓
+
+Velocity Team
+```
+
+یا
+
+```
+Burndown
+
+↓
+
+Remaining Work
+```
+
+Report معمولاً برای پاسخ به یک سؤال مشخص ساخته می‌شود.
+
+مثلاً:
+
+- آیا Sprint موفق بوده؟
+- چه مقدار کار باقی مانده؟
+- چند Bug داریم؟
+- چه زمانی Release آماده می‌شود؟
+
+---
+
+## ویژگی‌های Report
+
+✔ معمولاً Historical است.
+
+✔ برای تحلیل استفاده می‌شود.
+
+✔ قابل Export است.
+
+✔ معمولاً نمودار دارد.
+
+✔ اطلاعات را خلاصه می‌کند.
+
+---
+
+# 4. Dashboard چیست؟
+
+Dashboard یک صفحه است که چندین Gadget را کنار هم نمایش می‌دهد.
+
+نمونه:
+
+```
++-------------------------------------------+
+| Sprint Health | Velocity | Burndown       |
++-------------------------------------------+
+| Critical Bugs | Activity Stream           |
++-------------------------------------------+
+| Pie Chart     | My Open Issues            |
++-------------------------------------------+
+```
+
+Dashboard مانند داشبورد خودرو است.
+
+شما سرعت، بنزین، دما و دور موتور را هم‌زمان می‌بینید.
+
+در Jira نیز چندین شاخص را کنار هم مشاهده می‌کنید.
+
+---
+
+## کاربرد Dashboard
+
+- مانیتورینگ لحظه‌ای
+- مدیریت پروژه
+- Daily Meeting
+- Scrum Board
+- Executive Dashboard
+- نمایش روی مانیتور اتاق تیم
+
+---
+
+# 5. Gadget چیست؟
+
+هر بخش داخل Dashboard را Gadget می‌گویند.
+
+مثال:
+
+```
+Velocity Chart
+```
+
+یک Gadget است.
+
+```
+Pie Chart
+```
+
+یک Gadget دیگر است.
+
+```
+Activity Stream
+```
+
+یک Gadget دیگر.
+
+Dashboard از چندین Gadget تشکیل می‌شود.
 
 ---
 
 ## مثال
 
-| Story | Point |
-|--------|------:|
-| A | 8 |
-| B | 5 |
-| C | 3 |
-| D | 13 |
-
-Initial Commitment = 29 SP
-
----
-
-## در Jira کجاست؟
-
 ```
-Project
-    ↓
-Reports
-    ↓
-Sprint Report
+Dashboard
+
+├── Velocity Gadget
+
+├── Burndown Gadget
+
+├── Pie Chart Gadget
+
+├── Assigned To Me Gadget
+
+└── Activity Stream Gadget
 ```
 
-در Sprint Report این مقدار به صورت مستقیم نمایش داده نمی‌شود اما از وضعیت Sprint در زمان شروع قابل استخراج است.
+---
+
+# 6. Filter چیست؟
+
+Filter مجموعه‌ای از Issueها است.
+
+مثلاً:
+
+```
+همه Bugهای پروژه ABC
+```
+
+یا
+
+```
+تمام Issueهای Sprint فعلی
+```
+
+یا
+
+```
+تمام Issueهای High Priority
+```
+
+Filter هیچ نموداری ندارد.
+
+فقط داده را انتخاب می‌کند.
 
 ---
 
-## افزونه
+## مثال
 
-اگر تاریخچه چند Sprint را بخواهید:
+```
+Project = CRM
 
-- eazyBI ⭐⭐⭐⭐⭐
-- Structure
-- Custom Charts
+AND
 
----
+Priority = High
 
-## مدیر پروژه چگونه تفسیر کند؟
+AND
 
-کم بودن Initial Commitment
+Status != Done
+```
 
-↓
+خروجی:
 
-ظرفیت تیم خالی مانده است.
-
-زیاد بودن آن
-
-↓
-
-احتمال Carry Over زیاد است.
+```
+34 Issue
+```
 
 ---
 
-# 2. Final Commitment
+# 7. JQL چیست؟
 
-## تعریف
-
-مقدار کل کار Sprint بعد از تمام تغییرات.
-
-فرمول
-
-Final Commitment
+JQL
 
 =
 
-Initial Commitment
+Jira Query Language
 
-+
-
-Added Scope
-
--
-
-Removed Scope
-
----
-
-## مثال
-
-Initial = 30 SP
-
-Added = 10
-
-Removed = 5
-
-Final = 35 SP
-
----
-
-## محل در Jira
-
-Sprint Report
-
-قسمت
-
-Added Issues
-
-Removed Issues
-
----
-
-## چرا مهم است؟
-
-اگر اختلاف زیادی با Initial داشته باشد یعنی:
-
-- برنامه‌ریزی ضعیف بوده
-- یا Scope کنترل نشده است.
-
----
-
-# 3. Completed Commitment
-
-## تعریف
-
-کارهایی که تا پایان Sprint واقعاً Done شده‌اند.
+زبان جستجوی Jira است.
 
 مثال
 
-Initial = 40
+```sql
+project = CRM
+```
 
-Done = 35
+یا
 
-Completed Commitment = 35
+```sql
+assignee=currentUser()
+```
 
----
+یا
 
-## کاربرد
+```sql
+Sprint in openSprints()
+```
 
-اندازه‌گیری میزان تحقق تعهد تیم.
-
----
-
-## محل در Jira
-
-Sprint Report
-
-Velocity Report
+تقریباً تمام Dashboardها و Reportهای سفارشی بر پایه JQL ساخته می‌شوند.
 
 ---
 
-# 4. Commitment Reliability
+# رابطه JQL و Filter
 
-## تعریف
-
-درصد تحقق تعهد اولیه.
-
-فرمول
-
-Completed
-
-÷
-
-Initial
-
-×
-
-100
-
----
-
-## مثال
-
-Initial = 40
-
-Completed = 36
-
-Reliability = 90%
-
----
-
-## تفسیر
-
-95~100%
-
-⭐⭐⭐⭐⭐
-
-عالی
-
-90%
-
-⭐⭐⭐⭐
-
-خوب
-
-70%
-
-⭐⭐
-
-نیازمند بررسی
-
-کمتر از 60%
-
-🔴
-
-مشکل جدی
-
----
-
-## Jira
-
-به صورت پیش‌فرض ندارد.
-
-eazyBI بهترین گزینه است.
-
----
-
-# 5. Scope Change
-
-## تعریف
-
-تغییرات Sprint بعد از شروع.
-
-مثال
-
-- اضافه شدن Story
-- حذف Story
-- تغییر Estimate
-
----
-
-## محل در Jira
-
-Sprint Report
-
-Added Issues
-
-Removed Issues
-
----
-
-## تفسیر
-
-کم
+```
+JQL
 
 ↓
 
-Planning خوب
-
-زیاد
+Filter
 
 ↓
 
-Sprint ناپایدار
-
----
-
-# 6. Scope Creep
-
-## تعریف
-
-افزایش کنترل‌نشده Scope.
-
-مثال
-
-شروع Sprint
-
-30 Story Point
-
-پایان Sprint
-
-52 Story Point
-
-یعنی Scope Creep
-
----
-
-## Jira
-
-مستقیم ندارد.
-
-eazyBI
-
-Rich Filters
-
----
-
-# 7. Spillover
-
-## تعریف
-
-کارهایی که از Sprint جاری به Sprint بعد منتقل می‌شوند.
-
----
-
-## مثال
-
-Sprint
-
-40 Story Point
-
-Done
-
-32
-
-Remaining
-
-8
-
-Spillover = 8
-
----
-
-## محل
-
-Sprint Report
-
-Incomplete Issues
-
----
-
-## علت‌ها
-
-- تخمین اشتباه
-- باگ زیاد
-- Capacity کم
-- تغییر Scope
-
----
-
-# 8. Carry Over
-
-تقریباً همان Spillover است.
-
-برخی شرکت‌ها:
-
-Carry Over = Story
-
-Spillover = Story Point
-
----
-
-# 9. Sprint Goal Achievement
-
-## تعریف
-
-آیا هدف Sprint محقق شده؟
-
-ممکن است:
-
-80٪ Storyها Done باشند
-
-اما هدف اصلی انجام نشده باشد.
-
----
-
-## اندازه‌گیری
-
-معمولاً توسط Product Owner
-
-نه Jira.
-
----
-
-# 10. Focus Factor
-
-## تعریف
-
-نشان می‌دهد تیم چه مقدار از ظرفیت واقعی خود را صرف کار مفید کرده است.
-
-فرمول رایج
-
-Completed Story Points
-
-÷
-
-Capacity
-
----
-
-## مثال
-
-Capacity
-
-50
-
-Completed
-
-40
-
-Focus Factor
-
-80%
-
----
-
-## محل
-
-در Jira وجود ندارد.
-
-Tempo
-
-eazyBI
-
----
-
-# 11. Capacity
-
-## تعریف
-
-کل توان تیم برای انجام کار.
-
-مثال
-
-5 نفر
-
-هر نفر
-
-8 ساعت
-
-10 روز
-
-Capacity
-
-400 ساعت
-
----
-
-## آیا Jira دارد؟
-
-❌ خیر
-
----
-
-## افزونه
-
-Tempo Planner
-
-Advanced Roadmaps
-
-BigPicture
-
----
-
-# 12. Effective Capacity
-
-## تعریف
-
-ظرفیت واقعی بعد از حذف:
-
-- مرخصی
-- جلسه
-- تعطیلی
-- آموزش
-- پشتیبانی
-
----
-
-## مثال
-
-Capacity
-
-400
-
-Meeting
-
-40
-
-Vacation
-
-24
-
-Support
-
-36
-
-Effective Capacity
-
-300
-
----
-
-# تفاوت Capacity و Velocity
-
-| Capacity | Velocity |
-|-----------|----------|
-| قبل از Sprint | بعد از Sprint |
-| توان تیم | خروجی تیم |
-| ساعت یا نفر-روز | Story Point |
-| برای برنامه‌ریزی | برای تحلیل |
-
----
-
-# تفاوت Commitment و Capacity
-
-Capacity
+Dashboard
 
 ↓
 
-حداکثر توان
+Report
+```
 
-Commitment
+---
+
+# مثال واقعی
+
+فرض کنید مدیر پروژه می‌خواهد:
+
+```
+تمام Bugهای Critical
+```
+
+ابتدا JQL می‌نویسد:
+
+```sql
+project = CRM
+AND issuetype = Bug
+AND priority = Highest
+```
+
+سپس آن را ذخیره می‌کند.
+
+```
+Critical Bugs
+```
+
+حالا این Filter را داخل Dashboard قرار می‌دهد.
+
+---
+
+# 8. ارتباط بین اجزا
+
+```
+Issue
 
 ↓
 
-کاری که تیم قبول کرده
-
-Completed
+Workflow
 
 ↓
 
-کاری که واقعاً انجام شده
+Database
+
+↓
+
+JQL
+
+↓
+
+Saved Filter
+
+↓
+
+Gadget
+
+↓
+
+Dashboard
+
+↓
+
+Manager
+```
+
+اگر یکی از این مراحل اشتباه باشد، گزارش نیز اشتباه خواهد بود.
 
 ---
 
-# افزونه‌های مناسب
+# 9. چرا بعضی گزارش‌ها اشتباه هستند؟
 
-| افزونه | کاربرد |
-|----------|----------|
-| eazyBI | KPIهای Sprint |
-| Tempo | Capacity |
-| Structure | مدیریت Sprint |
-| Rich Filters | Dashboard |
-| BigPicture | Planning |
-| Advanced Roadmaps | Capacity Planning |
+دلایل رایج:
 
----
+❌ Story Point وارد نشده است.
 
-# اشتباهات رایج
+❌ Sprint انتخاب نشده است.
 
-❌ مقایسه Velocity دو تیم
+❌ Workflow اشتباه است.
 
-❌ تغییر Story Point وسط Sprint
+❌ Issue به Version وصل نشده است.
 
-❌ اضافه کردن Scope زیاد
+❌ Statusها استاندارد نیستند.
 
-❌ استفاده از Velocity برای ارزیابی عملکرد افراد
+❌ کاربران Worklog ثبت نمی‌کنند.
 
-❌ برابر دانستن Capacity با Velocity
+❌ Resolution تنظیم نشده است.
 
 ---
 
-# بهترین KPIهای Sprint
+# 10. اصل طلایی گزارش‌گیری
 
-- Initial Commitment
-- Final Commitment
-- Completed Commitment
-- Commitment Reliability
-- Velocity
-- Average Velocity
-- Capacity
-- Effective Capacity
-- Scope Change
-- Scope Creep
-- Spillover
-- Sprint Goal Achievement
-- Focus Factor
+بسیاری از مدیران فکر می‌کنند مشکل از Dashboard است.
+
+در ۹۰٪ مواقع مشکل از کیفیت داده‌هاست.
+
+اگر داده‌ها ناقص باشند:
+
+- Velocity اشتباه می‌شود.
+- Burndown اشتباه می‌شود.
+- Capacity اشتباه می‌شود.
+- Release Forecast اشتباه می‌شود.
+
+به همین دلیل اولین وظیفه Jira Admin همیشه حفظ کیفیت داده‌هاست.
 
 ---
 
-# جمع‌بندی
+# خلاصه
 
-اگر فقط این ۱۲ شاخص را همیشه بررسی کنید، حدود ۸۰٪ سلامت Sprint قابل ارزیابی است.
+```
+Issue
+
+↓
+
+Data
+
+↓
+
+JQL
+
+↓
+
+Filter
+
+↓
+
+Gadget
+
+↓
+
+Dashboard
+
+↓
+
+Decision
+```
+
+هرچه داده‌ها دقیق‌تر باشند، تصمیم‌های مدیریتی بهتر خواهند بود.
