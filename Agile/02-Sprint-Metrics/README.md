@@ -201,35 +201,25 @@ Predictability --> ReleaseForecast
 
 ---
 
-# مسیر یادگیری Day 2
+# مسیر مطالعه فصل
 
-در ادامه این بخش، هر فایل به یکی از متریک‌های اصلی اختصاص دارد:
+این فصل را به ترتیب زیر بخوانید:
 
-1. Velocity
-2. Initial Commitment
-3. Final Commitment
-4. Capacity
-5. Scope Change
-6. Burndown
-7. Burnup
-8. Sprint Health
-9. Forecasting
-10. فرمول‌ها و KPIها
+1. [راهنمای کامل Sprint Metrics](sprint-metrics-guide.md): مفاهیم، Capacity، Commitment، Scope و Spillover
+2. [فرمول‌ها و KPIها](formulas.md): تعریف دقیق صورت و مخرج هر شاخص
+3. [JQLهای کاربردی](jql.md): فیلترهای قابل استفاده در Jira
+4. [طراحی Dashboard](dashboard.md): چیدمان، هدف و تفسیر هر Gadget
+5. [سؤالات مصاحبه](interview-notes.md): پاسخ‌های سناریومحور
 
-هر متریک با این قالب بررسی می‌شود:
+برای تحلیل عمیق‌تر، فصل‌های بعدی مکمل این فصل‌اند:
 
-- Definition
-- Business Purpose
-- Formula
-- Data Source
-- Jira Location
-- Cloud vs Data Center
-- Configuration
-- Example
-- Interpretation
-- Enterprise Scenario
-- Best Practices
-- Common Mistakes
-- Related Metrics
-- Dashboard Usage
-- Interview Questions
+- [Flow Metrics](../03-Flow-Metrics/README.md): Lead Time، Cycle Time، WIP و Throughput
+- [Capacity Planning & Forecasting](../04-Capacity-Planning-and-Forecasting/README.md): پیش‌بینی و برنامه‌ریزی ظرفیت
+- [Flow Metrics & Kanban](../05-Flow-Metrics-and-Kanban/README.md): CFD، SLE و DORA
+
+## قرارداد اندازه‌گیری
+
+- همهٔ شاخص‌های یک تیم باید با یک واحد ثابت محاسبه شوند؛ Story Point را با ساعت جمع نکنید.
+- «Done» باید به یک Status Category یا وضعیت پایانیِ توافق‌شده نگاشت شود.
+- Snapshot شروع Sprint را نگه دارید؛ بدون آن، Initial Commitment و Scope Change قابل اعتماد نیستند.
+- شاخص‌ها برای بهبود سیستم‌اند، نه رتبه‌بندی افراد.

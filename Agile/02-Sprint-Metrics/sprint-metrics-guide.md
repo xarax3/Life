@@ -1,4 +1,4 @@
-# Sprint Metrics
+# راهنمای کامل Sprint Metrics
 
 > سطح: Intermediate → Advanced
 >
