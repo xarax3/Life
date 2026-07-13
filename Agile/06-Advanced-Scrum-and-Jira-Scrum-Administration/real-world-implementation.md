@@ -1,7 +1,4 @@
-روز ششم از نظر محتوای اصلی تمام شده بود، اما برای کامل شدن مسیر **Life OS** یک بخش تکمیلی اضافه می‌کنم:
-
-```markdown
-# File: Life/Agile/Jira/06-Advanced-Scrum-and-Jira-Scrum-Administration/real-world-implementation.md
+# Real-world Scrum Implementation
 
 # Day 6 - Part 8
 # Real World Scrum Implementation Guide
@@ -470,8 +467,7 @@ Configure Jira
 ↓
 
 Document
-
-````
+```
 
 ---
 
@@ -503,7 +499,7 @@ Metrics
 ↓
 
 Continuous Improvement
-````
+```
 
 ---
 
@@ -545,21 +541,4 @@ Continuous Improvement
 
 # END OF DAY 6
 
-Next:
-
-# Day 7 - Jira Data Center Architecture & Administration
-
-Topics:
-
-* Jira Data Center Components
-* Cluster Architecture
-* Shared Home
-* Local Home
-* Load Balancer
-* Database Layer
-* JVM
-* Index Management
-* Production Operations
-
-```
-```
+ادامهٔ مسیر: [روز ۷ — Automation، Governance و Data Quality](../07-Automation-Governance-and-Data-Quality/README.md)

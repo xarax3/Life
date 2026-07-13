@@ -1,5 +1,4 @@
-````markdown id="j6p3md"
-# File: Life/Agile/Jira/06-Advanced-Scrum-and-Jira-Scrum-Administration/jira-scrum-configuration.md
+# Jira Scrum Configuration
 
 # Day 6 - Part 3
 # Jira Scrum Configuration & Sprint Management
@@ -38,8 +37,7 @@ Sprints
 ↓
 
 Reports
-````
-
+```
 ---
 
 # 28. Jira Scrum Board
@@ -687,6 +685,3 @@ Create Report Task
 * Performance & Governance
 * Jira Admin Interview Scenarios
 * Final Scrum Architecture
-
-```
-```

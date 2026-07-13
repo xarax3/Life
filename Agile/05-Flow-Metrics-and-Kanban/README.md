@@ -1,5 +1,4 @@
-# Day 5
-# Flow Metrics, Kanban Metrics & DevOps Metrics
+# Day 5 — Flow, Kanban & DevOps Metrics
 
 ---
 
@@ -178,93 +177,14 @@ Production
 
 # ترتیب مطالعه
 
-## Part 1
+# ترتیب مطالعه
 
-Lead Time
-
----
-
-## Part 2
-
-Cycle Time
-
----
-
-## Part 3
-
-Throughput
-
----
-
-## Part 4
-
-Work Item Age
-
----
-
-## Part 5
-
-Flow Efficiency
-
----
-
-## Part 6
-
-Work In Progress
-
----
-
-## Part 7
-
-Cumulative Flow Diagram
-
----
-
-## Part 8
-
-Control Chart
-
----
-
-## Part 9
-
-Scatter Plot
-
----
-
-## Part 10
-
-Aging Chart
-
----
-
-## Part 11
-
-Burnup Chart
-
----
-
-## Part 12
-
-Burnup vs Burndown
-
----
-
-## Part 13
-
-DORA Metrics
-
----
-
-## Part 14
-
-Service Level Expectation
-
----
-
-## Part 15
-
-Dashboard Design
+1. [Lead Time](lead-time.md) و [Cycle Time](cycle-time.md)
+2. [Throughput](throughput.md)، [Work Item Age](work-item-age.md)، [WIP](work-in-progress.md) و [Flow Efficiency](flow-efficiency.md)
+3. [CFD](cumulative-flow-diagram.md)، [Control Chart](control-chart.md)، [Scatter Plot](scatter-plot.md) و [Aging Chart](aging-chart.md)
+4. [Burnup](burnup-chart.md) و [Burnup vs Burndown](burnup-vs-burndown.md)
+5. [DORA Metrics](dora-metrics.md)، [SLE](service-level-expectation.md) و [Dashboard Design](dashboard-design.md)
+6. [Formula Reference](formulas.md)، [Glossary](glossary.md)، [Interview Notes](interview-notes.md) و [References](references.md)
 
 ---
 

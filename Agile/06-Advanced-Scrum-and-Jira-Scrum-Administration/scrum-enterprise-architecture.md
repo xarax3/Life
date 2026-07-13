@@ -1,5 +1,4 @@
-````markdown id="d6p6arch"
-# File: Life/Agile/Jira/06-Advanced-Scrum-and-Jira-Scrum-Administration/scrum-enterprise-architecture.md
+# Scrum Enterprise Architecture
 
 # Day 6 - Part 6
 # Enterprise Scrum Architecture & Advanced Jira Practices
@@ -40,8 +39,7 @@ Delivery
 ↓
 
 Customer Value
-````
-
+```
 ---
 
 # 90. Portfolio Level Management
@@ -621,14 +619,4 @@ Improvement
 
 ---
 
-# Next Part
-
-Day 6 - Part 7:
-
-* Final Scrum Enterprise Blueprint
-* Jira Administration Checklist
-* Production Jira Governance Model
-* Complete Day 6 Summary
-
-```
-```
+ادامهٔ مسیر: [Blueprint نهایی روز ۶](final-enterprise-blueprint.md) و سپس [روز ۷](../07-Automation-Governance-and-Data-Quality/README.md).

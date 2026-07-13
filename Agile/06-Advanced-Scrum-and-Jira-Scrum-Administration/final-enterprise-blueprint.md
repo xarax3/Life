@@ -1,5 +1,4 @@
-````markdown id="d6p7final"
-# File: Life/Agile/Jira/06-Advanced-Scrum-and-Jira-Scrum-Administration/final-enterprise-blueprint.md
+# Final Enterprise Blueprint
 
 # Day 6 - Part 7
 # Final Scrum Enterprise Blueprint & Complete Summary
@@ -40,8 +39,7 @@ Release Management
 ↓
 
 Customer Value
-````
-
+```
 ---
 
 # 111. Agile Operating Rhythm
@@ -653,20 +651,4 @@ Continuous Improvement
 
 # Next Chapter
 
-# Day 7 - Jira Data Center Architecture & Administration
-
-Topics:
-
-* Jira Data Center Architecture
-* Cluster Design
-* Shared Home
-* Local Home
-* Load Balancer
-* Database Layer
-* JVM Architecture
-* Index Management
-* High Availability Design
-* Production Administration
-
-```
-```
+ادامهٔ مسیر: [روز ۷ — Automation، Governance و Data Quality](../07-Automation-Governance-and-Data-Quality/README.md)

@@ -1,7 +1,4 @@
-روز ششم را عملاً پوشش داده بودیم، اما برای تکمیل کامل فصل Scrum یک بخش نهایی عملیاتی اضافه می‌کنم:
-
-````markdown
-# File: Life/Agile/Jira/06-Advanced-Scrum-and-Jira-Scrum-Administration/operational-playbook.md
+# Scrum Operational Playbook
 
 # Day 6 - Part 9
 # Scrum Operational Playbook
@@ -28,8 +25,7 @@ Developers
         |
 
 QA / Automation / UX / DevOps
-````
-
+```
 ---
 
 # 142. Team Working Agreement
@@ -496,21 +492,4 @@ Operational Management
 
 # Next Chapter
 
-# Day 7 - Jira Data Center Architecture & Administration
-
-شروع بخش زیرساخت و معماری Jira:
-
-Topics:
-
-* Jira Data Center Architecture
-* Node Design
-* Shared Home
-* Local Home
-* Load Balancer
-* Database Architecture
-* JVM
-* Indexing
-* Production Administration
-
-```
-```
+ادامهٔ مسیر: [روز ۷ — Automation، Governance و Data Quality](../07-Automation-Governance-and-Data-Quality/README.md)

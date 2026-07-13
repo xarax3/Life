@@ -1,5 +1,4 @@
-```markdown id="m7k2q"
-# File: Life/Agile/Jira/06-Advanced-Scrum-and-Jira-Scrum-Administration/backlog-and-planning.md
+# Backlog Management & Sprint Planning
 
 # Day 6 - Part 2
 # Backlog Refinement, Estimation & Sprint Planning
@@ -692,4 +691,3 @@ Build Reports
 - Velocity Management
 - Release Planning
 - Enterprise Scrum Governance
-```

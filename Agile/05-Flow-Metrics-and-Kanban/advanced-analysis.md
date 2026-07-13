@@ -1,9 +1,4 @@
-درست می‌گویید. مشکل از این بود که متن داخل بلاک Markdown کامل بسته نشده بود و شناسه‌ها وسط محتوا وارد شده بودند. از این به بعد فقط **یک بلاک کامل Markdown قابل کپی برای GitHub** می‌دهم.
-
-````markdown
-# File: Life/Agile/Jira/05-Flow-Metrics-and-Kanban/advanced-analysis.md
-
-# Advanced Agile Flow Analysis
+# Advanced Flow Analysis
 
 > تحلیل پیشرفته Flow در Jira برای تیم‌های Enterprise، شامل تشخیص Bottleneck، Forecast، بهبود فرآیند و تصمیم‌گیری مدیریتی.
 
@@ -27,7 +22,7 @@ Code Review
 Testing
   |
 Done
-````
+```
 
 اگر Testing طولانی شود:
 
@@ -606,14 +601,3 @@ Continuous Improvement
 * Flow Health
 * Agile Maturity Model
 * Enterprise Flow Optimization
-
-````
-
-مسیر GitHub:
-
-```text
-Life/Agile/Jira/05-Flow-Metrics-and-Kanban/advanced-analysis.md
-````
-
-```
-```

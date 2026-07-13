@@ -1,5 +1,4 @@
-```markdown id="d6p4scrum"
-# File: Life/Agile/Jira/06-Advanced-Scrum-and-Jira-Scrum-Administration/scrum-best-practices.md
+# Scrum Best Practices
 
 # Day 6 - Part 4
 # Scrum Anti Patterns, Enterprise Best Practices & Jira Governance

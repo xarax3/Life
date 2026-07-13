@@ -1,5 +1,4 @@
-```markdown
-# File: Life/Agile/Jira/06-Advanced-Scrum-and-Jira-Scrum-Administration/interview-and-enterprise-scenarios.md
+# Interview & Enterprise Scenarios
 
 # Day 6 - Part 5
 # Advanced Scrum Interview Scenarios & Enterprise Cases
@@ -634,4 +633,3 @@ Optimization
 - Release Planning
 - Governance
 - Enterprise Best Practices
-```
